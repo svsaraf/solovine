@@ -1,0 +1,22 @@
+{% extends 'registration/base.html' %}
+
+{% block titleblock %}
+Login here
+{% endblock %}
+
+{% block bodyblock %}
+<div id="form-target"> Login here
+<form ic-post-to="/login/" ic-target="#form-target" ic-include="#defaults">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1"
+             placeholder="Password">
+    </div>
+    <button id="form-button-1" type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+{% endblock %}

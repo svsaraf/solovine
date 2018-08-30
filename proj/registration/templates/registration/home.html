@@ -1,0 +1,18 @@
+{% extends 'registration/base.html' %}
+
+{% block titleblock %}
+Home
+{% endblock %}
+
+{% block bodyblock %}
+<div style="float: right;" id="authtarget">
+{% if user.is_authenticated %}
+    Hi {{ user.first_name }}! | <a ic-post-to="/logout/" ic-target="#authtarget" ic-include="#defaults" href="#">Logout</a>
+{% else %}
+    <a href="/login">Login</a> | <a href="/register">Register</a>
+{% endif %}
+</div>
+<div>
+    Amicis carissimis ova dura et salutem.
+</div>
+{% endblock %}

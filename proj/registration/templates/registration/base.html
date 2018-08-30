@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{% block titleblock %}{% endblock %}</title>
+</head>
+<body><form id="defaults" >
+    <input name="csrfmiddlewaretoken" type="hidden" value="{{ csrf_token }}">
+</form>{% block bodyblock %}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="http://cdn.intercoolerjs.org/intercooler-1.2.1.min.js"></script>
+</body>
+</html>
