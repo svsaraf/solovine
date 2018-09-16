@@ -1,0 +1,5 @@
+<form id="commentdefaults" >
+    <input name="csrfmiddlewaretoken" type="hidden" value="{{ csrf_token }}">
+    <input name="postvalue" type="hidden" value="{{ posts.pk }}">
+</form>
+<input type="text" ic-target="this" ic-replace-target="true" ic-post-to="/reply/{{commentid}}/" ic-include="#commentdefaults" name="commenttext">

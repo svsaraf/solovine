@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% load static from staticfiles %}
+    <title>{% block titleblock %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/base.css" %}" />
+</head>
+<body><form id="defaults" >
+    <input name="csrfmiddlewaretoken" type="hidden" value="{{ csrf_token }}" ic-global-include="#defaults">
+</form>
+{% block headerblock %}
+<div class="header">
+    <div class="logo">
+        <a href="/posts/" style="color: black; text-decoration: none;"><b><i>solovine</i></b></a>
+    </div>
+    <div class="userstatus" id="authtarget">
+        {% if user.is_authenticated %}
+            Hi {{ user.first_name }}! | <a ic-post-to="/logout/" ic-target="#authtarget" ic-include="#defaults" href="#">Logout</a>
+        {% else %}
+            <a href="/login">Login</a> | <a href="/register">Register</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block bodyblock %}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="http://cdn.intercoolerjs.org/intercooler-1.2.1.min.js"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

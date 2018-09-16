@@ -1,10 +1,11 @@
-{% extends 'registration/base.html' %}
+{% extends 'posts/base.html' %}
 
 {% block titleblock %}
 Login here
 {% endblock %}
 
 {% block bodyblock %}
+<div class="main">
 <div id="form-target"> Login here
 <form ic-post-to="/login/" ic-target="#form-target" ic-include="#defaults">
     <div class="form-group">
@@ -18,5 +19,6 @@ Login here
     </div>
     <button id="form-button-1" type="submit" class="btn btn-default">Submit</button>
 </form>
+</div>
 </div>
 {% endblock %}

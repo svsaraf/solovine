@@ -1,0 +1,109 @@
+body {
+    background-color: white;
+    margin: 0px;
+}
+
+body {
+    display: grid;
+    min-height: 100%;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "main";
+}
+
+.header {
+    background-color: #06778480;
+    padding-left: 6px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.userstatus {
+    float: right;
+    display: inline-block;
+}
+
+.logo {
+    display: inline-block;
+}
+
+.main {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #00ff661a;
+    height: 100%;
+    padding-top: 15px;
+    padding-left: 6px;
+}
+
+.posttitle {
+
+}
+
+.postauthor {
+    font-size: 14px;
+    display: inline-block;
+}
+
+.postauthor a {
+    text-decoration: none;
+    color: #6c6053cc;
+}
+.postage {
+    display: inline-block;
+    font-family: helvetica;
+    font-size: 13px;
+    color: #6c6053cc;
+}
+
+.posttext {
+    width: 600px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.postcomments {
+    display: inline-block;
+    font-family: helvetica;
+    font-size: 13px;
+    color: #6c6053cc;
+}
+
+.postcomments a {
+    text-decoration: none;
+    color: #6c6053cc;
+}
+
+.commentauthor a {
+    text-decoration: none;
+    color: #6c6053cc;
+    font-size: 13px;
+}
+.commentauthor {
+    display: inline-block;
+}
+.commentage {
+    font-family: helvetica;
+    font-size: 13px;
+    display: inline-block;
+        color: #6c6053cc;
+
+}
+
+.reply {
+    text-decoration: none;
+    font-size: 13px;
+    color: #6c6053cc;
+    cursor: pointer;
+}
+
+.editor {
+    display: inline-block;
+}
+.submitbutton {
+    text-decoration: none;
+    color: #6c6053cc;
+    font-size: 18px;
+}

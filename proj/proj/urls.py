@@ -16,11 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from registration import views as registration_views
+from posts import views as posts_views
+from feeds import views as feeds_views
+admin.site.site_header = 'Solovine admin'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', registration_views.home, name='home'),
     path('register/', registration_views.register, name='register'),
     path('login/', registration_views.login, name='login'),
     path('logout/', registration_views.logout, name='logout'),
+    path('profile/<int:profileid>/', registration_views.profile, name='profile'),
+    
+    path('posts/', posts_views.posts, name='posts'),
+    path('post/<slug:title>/', posts_views.post, name='post'),
+    path('getcommentreply/<int:commentid>/', posts_views.getcommentreply, name='getcommentreply'),
+    path('reply/<int:commentid>/', posts_views.commentreply, name='commentreply'),
+    path('create/', posts_views.create, name='create'),
+    
+    path('feeds/', feeds_views.feeds, name='feeds'),
 ]
+
