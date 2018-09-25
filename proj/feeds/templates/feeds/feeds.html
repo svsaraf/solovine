@@ -1,11 +1,22 @@
 {% extends 'posts/base.html' %}
 
 {% block titleblock %}
-Feeds Home
+Solovine Feeds
 {% endblock %}
 
 {% block bodyblock %}
 <div class="main">
-    Feeds page
+    {% for key, value in feeds.items %}
+        <div class="feed" style="width: 300px; display: inline-block; vertical-align: top; background-color: white;">
+        <div style="padding-bottom: 4px; color: black"><u>{{key}}</u></div>
+        {% for entry in value %}
+                <div class="post">
+                    <div class="posttitle"><a href="{{entry.link}}" title="{{entry.summary}}" target="blank"><b>{{entry.title}}</b></a></div>
+                    <div class="postauthor"><a href="#">{{entry.author}}</a></div> | <div class="postage">{{entry.published|date:"D d M Y"}}</div>
+                    <p>
+                </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}

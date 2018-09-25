@@ -14,6 +14,7 @@ Posts Home
         </form>
         <div class="post">
             <div class="posttitle"><a href="/post/{{p.slug}}"><b>{{p.title}}</b></a></div>
+            <div class="postlink">(<a href="{{p.link}}">{{p.link}}</a>)</div><br>
             <div class="postauthor"><a href="/profile/{{p.author.pk}}">{{p.author.first_name}} {{p.author.last_name}}</a></div> | <div class="postage">{{p.timestamp|date:"D d M Y"}}</div> | <div class="postcomments">{{p.num_comments}} comments</div>
             <div class="posttext">{{p.text}}</div>
         </div>

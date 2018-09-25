@@ -39,7 +39,7 @@ body {
 }
 
 .posttitle {
-
+    display: inline-block;
 }
 
 .postauthor {
@@ -50,6 +50,15 @@ body {
 .postauthor a {
     text-decoration: none;
     color: #6c6053cc;
+}
+
+.postlink a {
+    text-decoration: none;
+    color: #6c6053cc;
+}
+
+.postlink {
+    display: inline-block;
 }
 .postage {
     display: inline-block;
