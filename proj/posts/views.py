@@ -57,15 +57,28 @@ def commentreply(request, commentid):
 @login_required(login_url='/login')
 def create(request):
     context = {}
-    if request.method == 'POST':
+    if request.method == 'GET':
+        if request.GET.get('title'):
+            context['title'] = request.GET.get('title')
+        else:
+            context['title'] = ''
+        if request.GET.get('link'):
+            context['link'] = request.GET.get('link')
+        else:
+            context['link'] = ''
+        return render(request, 'posts/create.html', context)        
+    elif request.method == 'POST':
         title = request.POST.get("title", "")
         link = request.POST.get("link", "")
         editorvalue = request.POST.get("editorvalue", "")
         user = request.user
         slug = slugify(title[:100])
-        p = Post(author=user, title=title, text=editorvalue, link=link, slug=slug)
-        p.save()
-        context['message'] = 'Message posted!'
+        if title == None or title == '':
+            context['message'] = 'You need a title :)'
+        else:
+            p = Post(author=user, title=title, text=editorvalue, link=link, slug=slug)
+            p.save()
+            context['message'] = 'Message posted!'
         return render(request, 'posts/success.html', context)
     return render(request, 'posts/create.html', context)
 

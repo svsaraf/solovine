@@ -57,6 +57,15 @@ body {
     color: #6c6053cc;
 }
 
+.postsend {
+    display: inline-block;
+}
+.postsend a {
+    text-decoration: none;
+    color: #6c6053cc;
+    font-size: 14px;
+}
+
 .postlink {
     display: inline-block;
 }

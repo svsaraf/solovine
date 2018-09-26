@@ -6,8 +6,6 @@ Posts Home
 
 {% block bodyblock %}
 <div class="main">
-    <a href="/create">Write a new post!</a>
-    <p>
     {% for p in posts %}
         <div class="post">
             <div class="posttitle"><a href="/post/{{p.slug}}"><b>{{p.title}}</b></a></div>
