@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'registration',
     'posts',
     'feeds',
+    'friends',
 ]
 
 MIDDLEWARE = [

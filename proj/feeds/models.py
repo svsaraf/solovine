@@ -14,9 +14,8 @@ class RSSEntry(models.Model):
     feed = models.ForeignKey(RSSFeed, on_delete='cascade', blank=True, null=True)
     title = models.CharField(max_length=200)
     link = models.URLField()
-    author = models.CharField(max_length=200)
     published = models.DateTimeField()
     summary = models.TextField()
 
     def __str__(self):
-        return self.title + " published by " + self.author
+        return self.title + " published by " + self.feed.title

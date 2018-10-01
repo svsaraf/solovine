@@ -18,6 +18,7 @@ from django.urls import path
 from registration import views as registration_views
 from posts import views as posts_views
 from feeds import views as feeds_views
+from friends import views as friends_views
 admin.site.site_header = 'Solovine admin'
 
 urlpatterns = [
@@ -27,7 +28,6 @@ urlpatterns = [
     path('register/', registration_views.register, name='register'),
     path('login/', registration_views.login, name='login'),
     path('logout/', registration_views.logout, name='logout'),
-    path('profile/<int:profileid>/', registration_views.profile, name='profile'),
     
     path('posts/', posts_views.posts, name='posts'),
     path('post/<slug:title>/', posts_views.post, name='post'),
@@ -36,5 +36,14 @@ urlpatterns = [
     path('create/', posts_views.create, name='create'),
     
     path('feeds/', feeds_views.feeds, name='feeds'),
+    path('getfeedadd/', feeds_views.getfeedadd, name='getfeedadd'),
+    path('addfeed/', feeds_views.addfeed, name='addfeed'),
+
+
+    path('user/<str:email>/', friends_views.profile, name='userprofile'),
+    path('accept/<str:email>/', friends_views.accept, name='acceptrequest'),
+    path('send/<str:email>/', friends_views.send, name='sendrequest'),
+    path('reject/<str:email>/', friends_views.reject, name='rejectrequest'),
+    path('cancel/<str:email>/', friends_views.cancel, name='cancelrequest'),
 ]
 

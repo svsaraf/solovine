@@ -6,13 +6,14 @@ Solovine Feeds
 
 {% block bodyblock %}
 <div class="main">
+    <div class="addfeed" ic-target="this" ic-replace-target="true" ic-post-to="/getfeedadd/"><a href="#" style="font-size: 18px; text-decoration: none;">+</a></div>
     {% for key, value in feeds.items %}
-        <div class="feed" style="width: 300px; display: inline-block; vertical-align: top; background-color: white;">
+        <div class="feed" style="width: 300px; display: inline-block; vertical-align: top; background-color: white; margin-bottom: 10px;">
         <div style="padding-bottom: 4px; color: black"><u>{{key}}</u></div>
         {% for entry in value %}
                 <div class="post">
                     <div class="posttitle"><a href="{{entry.link}}" title="{{entry.summary}}" target="blank"><b>{{entry.title}}</b></a></div><br>
-                    <div class="postauthor"><a href="#">{{entry.author}}</a></div> | <div class="postage">{{entry.published|date:"D d M Y"}}</div> | <div class="postsend"><a href="/create?title={{entry.title}}&link={{entry.link}}">post!</a></div>
+                    <!--<div class="postauthor"><a href="#">{{entry.author}}</a></div> | --><div class="postage">{{entry.published|date:"D d M Y"}}</div> | <div class="postsend"><a href="/create?title={{entry.title}}&link={{entry.link}}">post!</a></div>
                     <p>
                 </div>
         {% endfor %}

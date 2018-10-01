@@ -4,11 +4,20 @@ from posts.models import Post, Comment
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.utils.text import slugify
+import math
+import random
+from django.db.models import Q
+from friends.models import Contact
 # Create your views here.
 @login_required(login_url='/login')
 def posts(request):
     context = {}
-    context['posts'] = Post.objects.annotate(num_comments=Count('comment')).all().order_by('-timestamp')
+    requestuser = request.user
+    # note that this does a where x = a or x = b style query and is thus less efficient than an inner join. 
+    exp = Q(author=requestuser)
+    for author in Contact.objects.filter(sender=requestuser, accepted=True).values_list('receiver', flat=True):
+        exp = exp | Q(author=author)
+    context['posts'] = Post.objects.filter(exp).annotate(num_comments=Count('comment')).all().order_by('-timestamp')
     return render(request, 'posts/posts.html', context)
 
 @login_required(login_url='/login')
@@ -73,6 +82,8 @@ def create(request):
         editorvalue = request.POST.get("editorvalue", "")
         user = request.user
         slug = slugify(title[:100])
+        if len(Post.objects.filter(slug=slug)) > 0:
+            slug += '-' + str(math.floor(random.uniform(1000,9999)))
         if title == None or title == '':
             context['message'] = 'You need a title :)'
         else:
@@ -81,8 +92,3 @@ def create(request):
             context['message'] = 'Message posted!'
         return render(request, 'posts/success.html', context)
     return render(request, 'posts/create.html', context)
-
-
-
-
-

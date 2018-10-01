@@ -14,7 +14,9 @@
         <a href="/posts/" style="color: black; text-decoration: none;"><b><i>solovine</i></b></a><a href="/feeds/" style="color: black; text-decoration: none; padding-left: 20px;"><u>feeds</u></a><a href="/posts/" style="color: black; text-decoration: none; padding-left: 10px;"><u>posts</u></a><a href="/create/" style="color: black; text-decoration: none; padding-left: 10px;"><u>write</u></a>
     </div>
     <div class="userstatus" id="authtarget">
+
         {% if user.is_authenticated %}
+        <a href="/user/{{user.email}}" style="color: black; text-decoration: none; padding-right: 10px;"><u>profile</u></a>
             Hi {{ user.first_name }}! | <a ic-post-to="/logout/" ic-target="#authtarget" ic-include="#defaults" href="#">Logout</a>
         {% else %}
             <a href="/login">Login</a> | <a href="/register">Register</a>

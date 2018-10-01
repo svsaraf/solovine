@@ -1,5 +1,5 @@
 <div class="comment" style="margin-left: {% widthratio c.level 1 40 %}px">
-    <div class="commentauthor"><a href="/profile/{{c.author.pk}}">{{c.author.first_name}} {{c.author.last_name}}</a></div> | <div class="commentage">{{c.timestamp|timesince}} ago</div>
+    <div class="commentauthor"><a href="/user/{{c.author.email}}">{{c.author.first_name}} {{c.author.last_name}}</a></div> | <div class="commentage">{{c.timestamp|timesince}} ago</div>
     <div class="comment">{{c.text}}</div>
     <div class="reply" ic-target="this" ic-replace-target="true" ic-include="#defaults" ic-post-to="/getcommentreply/{{c.pk}}/">reply</div>
 </div>

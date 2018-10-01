@@ -1,0 +1,43 @@
+{% extends 'posts/base.html' %}
+
+{% block titleblock %}
+{{ profile.first_name }}'s Profile
+{% endblock %}
+
+{% block bodyblock %}
+<div class="main">
+    <div><b>Email:</b> {{ profile.email }}</div>
+    <div><b>First name:</b> {{ profile.first_name }}</div>
+    <div><b>Last name:</b> {{ profile.last_name }}</div>
+
+    <br>
+    {% if can_send_request %}
+        <a ic-post-to="/send/{{profile.email}}/" href="#" ic-target='this'>Send Contact request</a>
+    {% endif %}
+
+    {% if sent_requests %}
+        Sent contact requests:
+        {% for s in sent_requests %}
+            <p><a href="/user/{{s.receiver.email}}/">{{s.receiver.first_name}} {{s.receiver.last_name}}</a> <a ic-post-to="/cancel/{{s.receiver.email}}/" href="#" ic-target='this' ic-replace-target="true" >cancel</a>
+        {% endfor %}
+    {% endif %}
+    {% if received_requests %}
+        <p>Received contact requests:
+        {% for r in received_requests %}
+        <p>
+            <div id="received_request_message">
+                    <a href="/user/{{r.sender.email}}">{{r.sender.first_name}} {{r.sender.last_name}}</a>
+                    <a ic-post-to="/accept/{{r.sender.email}}/" href="#" ic-target='#received_request_message'>accept</a>
+                    <a ic-post-to="/reject/{{r.sender.email}}/" href="#" ic-target='#received_request_message'>reject</a>
+            </div>
+        </p>
+        {% endfor %}
+    {% endif %}
+    {% if contacts %}
+        <p>Contacts:
+        {% for c in contacts %}
+            <p><a href="/user/{{c.receiver.email}}/">{{c.receiver.first_name}} {{c.receiver.last_name}}</a></p>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

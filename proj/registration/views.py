@@ -52,8 +52,3 @@ def logout(request):
     auth_logout(request)
     return render(request, 'registration/success.html', {'message': 'Logged out!'})
 
-def profile(request, profileid):
-    context = {}
-    context['profile'] = User.objects.filter(pk=profileid)[0]
-    return render(request, 'registration/profile.html', context)
-
