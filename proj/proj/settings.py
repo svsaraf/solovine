@@ -25,7 +25,7 @@ SECRET_KEY = 'qzuu+0en!psjk88led)^@_vrf4%l9u4r)j-^+%h4esw-$#_e24'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'www.solovine.com']
 
 
 # Application definition
