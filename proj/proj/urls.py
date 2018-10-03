@@ -28,7 +28,8 @@ urlpatterns = [
     path('register/', registration_views.register, name='register'),
     path('login/', registration_views.login, name='login'),
     path('logout/', registration_views.logout, name='logout'),
-    
+
+    path('public/', posts_views.public_posts, name='public_posts'),
     path('posts/', posts_views.posts, name='posts'),
     path('post/<slug:title>/', posts_views.post, name='post'),
     path('getcommentreply/<int:commentid>/', posts_views.getcommentreply, name='getcommentreply'),

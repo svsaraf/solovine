@@ -9,6 +9,7 @@ class Post(models.Model):
     link = models.URLField(null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField()
+    public = models.BooleanField(default=False)
 
     def __str__(self):
         return self.author.first_name + " " + self.author.last_name + ": " + self.title

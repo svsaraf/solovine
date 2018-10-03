@@ -11,6 +11,7 @@ Write a post
         <input type="text" name="title" style="width: 595px; border: none; padding: 0px; padding-left: 5px; height: 30px; margin-bottom: 10px; font-size: 13px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas'" placeholder="Title" value="{{title}}"> <div style="display: inline-block; float: right;">[Required] Add a title.</div>
         <input type="text" name="link" style="width: 595px; border: none; padding: 0px; padding-left: 5px; height: 30px; margin-bottom: 10px; font-size: 13px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas'" placeholder="http://google.com/" value="{{link}}"> <div style="display: inline-block; float: right;">[Optional] Add the link you're responding to.</div>
         <div id="editor" style="width: 600px; height: 350px; margin-bottom: 10px" placeholder="example"></div> <div style="float: right; margin-top: -350px;">[Optional] Write something.</div>
+        <input style="margin-bottom: 10px;" type="checkbox" name="public" value="public" checked>Make this public<br>
         <a class="submitbutton" ic-post-to="/create/" href="#" ic-target='#message'>publish!</a><div id="message" style="display: inline-block; margin-left: 15px;"></div>
     </form>
 </div>

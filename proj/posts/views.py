@@ -9,6 +9,12 @@ import random
 from django.db.models import Q
 from friends.models import Contact
 # Create your views here.
+
+def public_posts(request):
+    context = {}
+    context['posts'] = Post.objects.filter(public=True).order_by('-timestamp')[:20]
+    return render(request, 'posts/posts.html', context)
+
 @login_required(login_url='/login')
 def posts(request):
     context = {}
@@ -80,6 +86,12 @@ def create(request):
         title = request.POST.get("title", "")
         link = request.POST.get("link", "")
         editorvalue = request.POST.get("editorvalue", "")
+        public = request.POST.get("public", "")
+        public_bool = False
+        if public is None:
+            pass
+        else:
+            public_bool = True
         user = request.user
         slug = slugify(title[:100])
         if len(Post.objects.filter(slug=slug)) > 0:
@@ -87,7 +99,7 @@ def create(request):
         if title == None or title == '':
             context['message'] = 'You need a title :)'
         else:
-            p = Post(author=user, title=title, text=editorvalue, link=link, slug=slug)
+            p = Post(author=user, title=title, text=editorvalue, link=link, slug=slug, public=public_bool)
             p.save()
             context['message'] = 'Message posted!'
         return render(request, 'posts/success.html', context)
