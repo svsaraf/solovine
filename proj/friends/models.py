@@ -13,6 +13,7 @@ CIRCLE_TYPES = (
     ('h', 'hotel'), 
     ('i', 'india'), 
     ('j', 'juliett'),
+    ('z', 'zulu'),
 )
 
 class Contact(models.Model):
