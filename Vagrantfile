@@ -28,11 +28,17 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     set -e
 
+    ln -sf /usr/bin/python3 /usr/bin/python
     apt-get update && apt-get install -y python3-pip
     pip3 install -U pip
-    pip3 install -r /vagrant/requirements.txt
-    ln -sf /usr/bin/python3 /usr/bin/python
+    pip install virtualenv
+    virtualenv /vagrant/.venv
+    /vagrant/.venv/bin/pip3 install -r /vagrant/requirements.txt
+    chown -R vagrant:vagrant /home/vagrant/.venv
+
     grep --silent PYTHONDONTWRITEBYTECODE /home/vagrant/.profile || echo "export PYTHONDONTWRITEBYTECODE=1" >> /home/vagrant/.profile
-    grep --silent vagrant /home/vagrant/.profile || echo "cd /vagrant" >> /home/vagrant/.profile
+    grep --silent "cd /vagrant" /home/vagrant/.profile || echo "cd /vagrant" >> /home/vagrant/.profile
+    grep --silent venv /home/vagrant/.profile || echo "source /vagrant/.venv/bin/activate" >> /home/vagrant/.profile
+
   SHELL
 end
