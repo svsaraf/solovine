@@ -2,4 +2,5 @@ venv
 *.pyc
 *.sh
 *.sqlite3
+.vagrant
 proj/migrations
