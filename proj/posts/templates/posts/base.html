@@ -4,6 +4,7 @@
     {% load static from staticfiles %}
     <title>{% block titleblock %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static "css/base.css" %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head>
 <body><form id="defaults" >
     <input name="csrfmiddlewaretoken" type="hidden" value="{{ csrf_token }}" ic-global-include="#defaults">
