@@ -24,10 +24,11 @@ admin.site.site_header = 'Solovine admin'
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', registration_views.home, name='home'),
+    path('', posts_views.public_posts, name='public_posts'),
     path('register/', registration_views.register, name='register'),
     path('login/', registration_views.login, name='login'),
     path('logout/', registration_views.logout, name='logout'),
+    path('faq/', registration_views.faq, name='faq'),
 
     path('public/', posts_views.public_posts, name='public_posts'),
     path('public/<slug:title>/', posts_views.public_post, name='public_post'),

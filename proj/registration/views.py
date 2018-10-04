@@ -10,6 +10,9 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 def home(request):
     return render(request, 'registration/home.html', {})
 
+def faq(request):
+    return render(request, 'registration/faq.html', {})
+
 def register(request):
     if request.method == 'POST':
         email = request.POST.get("email", "")
