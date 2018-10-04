@@ -41,7 +41,10 @@ def login(request):
         user = authenticate(username=email, password=password)
         if user is not None:
             auth_login(request, user)
-            return render(request, 'registration/success.html', {'message': 'You are now logged in.'})
+            #return render(request, 'registration/success.html', {'message': 'You are now logged in.'})
+            response = render(request, 'registration/success.html', {'message': 'You are now logged in.'})
+            response['X-IC-Redirect'] = '/user/' + user.email
+            return response
         else:
             return render(request, 'registration/success.html', {'message': 'No user! You need to register!'})
     else:

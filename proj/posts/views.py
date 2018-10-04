@@ -12,7 +12,7 @@ from friends.models import Contact
 
 def public_posts(request):
     context = {}
-    context['posts'] = Post.objects.filter(public=True).order_by('-timestamp')[:20]
+    context['posts'] = Post.objects.filter(public=True).annotate(num_comments=Count('comment')).all().order_by('-timestamp')[:20]
     context['public'] = True
     return render(request, 'posts/posts.html', context)
 
@@ -95,11 +95,7 @@ def create(request):
         link = request.POST.get("link", "")
         editorvalue = request.POST.get("editorvalue", "")
         public = request.POST.get("public", "")
-        public_bool = False
-        if public is None:
-            pass
-        else:
-            public_bool = True
+        public_bool = (public == 'public')
         user = request.user
         slug = slugify(title[:100])
         if len(Post.objects.filter(slug=slug)) > 0:
@@ -110,5 +106,8 @@ def create(request):
             p = Post(author=user, title=title, text=editorvalue, link=link, slug=slug, public=public_bool)
             p.save()
             context['message'] = 'Message posted!'
+            response = render(request, 'posts/success.html', context)
+            response['X-IC-Redirect'] = '/post/' + slug
+            return response
         return render(request, 'posts/success.html', context)
     return render(request, 'posts/create.html', context)
