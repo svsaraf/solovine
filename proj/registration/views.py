@@ -28,7 +28,12 @@ def register(request):
                 return render(request, 'registration/success.html', {'message': 'Invalid email address!'})
             u = User.objects.create_user(username=email, password=password, email=email, first_name=firstname, last_name=lastname)
             u.save()
-            return render(request, 'registration/success.html', {'message': 'Successfully created user!'})
+            user = authenticate(username=email, password=password)
+            auth_login(request, user)
+            response = render(request, 'registration/success.html', {'message': 'Created user!'})
+            response['X-IC-Redirect'] = '/user/' + user.email
+            return response
+            #return render(request, 'registration/success.html', {'message': 'Successfully created user!'})
         #ajax registration
     else:
         #non ajax registration
