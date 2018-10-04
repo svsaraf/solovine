@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     pip install virtualenv
     virtualenv /vagrant/.venv
     /vagrant/.venv/bin/pip3 install -r /vagrant/requirements.txt
-    chown -R vagrant:vagrant /home/vagrant/.venv
+    chown -R vagrant:vagrant /vagrant/.venv
 
     grep --silent PYTHONDONTWRITEBYTECODE /home/vagrant/.profile || echo "export PYTHONDONTWRITEBYTECODE=1" >> /home/vagrant/.profile
     grep --silent "cd /vagrant" /home/vagrant/.profile || echo "cd /vagrant" >> /home/vagrant/.profile
