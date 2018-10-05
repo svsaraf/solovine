@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete='cascade')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     text = models.TextField()
     link = models.URLField(null=True)
@@ -15,8 +15,8 @@ class Post(models.Model):
         return self.author.first_name + " " + self.author.last_name + ": " + self.title
 
 class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete='cascade')
-    post = models.ForeignKey(Post, on_delete='cascade')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     parentcomment = models.ForeignKey('self', null=True, blank=True, on_delete='cascade')
     text = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)

@@ -12,15 +12,17 @@ def profile(request, email):
     if len(users) != 1:
         return HttpResponseRedirect('/posts')
     vieweduser = users[0]
+    context['contacts'] = Contact.objects.filter(accepted=True, sender=vieweduser)
     if vieweduser == request.user:
         context['sent_requests'] = Contact.objects.filter(accepted=False, sender=vieweduser)
         context['received_requests'] = Contact.objects.filter(accepted=False, receiver=vieweduser)
-        context['contacts'] = Contact.objects.filter(accepted=True, sender=vieweduser)
+        context['me'] = True
     elif vieweduser != request.user:
         if len(Contact.objects.filter(accepted=True, sender=vieweduser, receiver=request.user)) < 1: #not a friend
             if len(Contact.objects.filter(accepted=False, sender=vieweduser, receiver=request.user)) < 1: #potential friend has sent a request
                 if len(Contact.objects.filter(accepted=False, sender=request.user, receiver=vieweduser)) < 1: #you have already sent a request
                     context['can_send_request'] = True
+                    context['me'] = False
     context['profile'] = users[0]
 
     return render(request, 'friends/profile.html', context)

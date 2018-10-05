@@ -11,7 +11,7 @@ class RSSFeed(models.Model):
         return self.source + ": " + self.modified
 
 class RSSEntry(models.Model):
-    feed = models.ForeignKey(RSSFeed, on_delete='cascade', blank=True, null=True)
+    feed = models.ForeignKey(RSSFeed, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=200)
     link = models.URLField()
     published = models.DateTimeField()

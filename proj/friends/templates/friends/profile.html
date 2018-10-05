@@ -15,15 +15,15 @@
         <a ic-post-to="/send/{{profile.email}}/" href="#" ic-target='this'>Send Contact request</a>
     {% endif %}
 
-    {% if sent_requests %}
-        Sent contact requests:
+    {% if me %}
+        <p><b>Sent contact requests:</b>
         {% for s in sent_requests %}
             <p><a href="/user/{{s.receiver.email}}/">{{s.receiver.first_name}} {{s.receiver.last_name}}</a> <a ic-post-to="/cancel/{{s.receiver.email}}/" href="#" ic-target='this' ic-replace-target="true" >cancel</a>
+        {% empty %}
+            <p>You haven't sent any contact requests! C'mon, you know you want to.
         {% endfor %}
-    {% endif %}
-    {% if received_requests %}
-        <p>Received contact requests:
-        {% for r in received_requests %}
+        <p><b>Received contact requests:</b>
+    {% for r in received_requests %}
         <p>
             <div id="received_request_message">
                     <a href="/user/{{r.sender.email}}">{{r.sender.first_name}} {{r.sender.last_name}}</a>
@@ -31,13 +31,17 @@
                     <a ic-post-to="/reject/{{r.sender.email}}/" href="#" ic-target='#received_request_message'>reject</a>
             </div>
         </p>
-        {% endfor %}
+    {% empty %}
+        <p>No one's sent you any contact requests. Boo. 
+    {% endfor %}
     {% endif %}
-    {% if contacts %}
-        <p>Contacts:
-        {% for c in contacts %}
-            <p><a href="/user/{{c.receiver.email}}/">{{c.receiver.first_name}} {{c.receiver.last_name}}</a></p>
-        {% endfor %}
-    {% endif %}
+    <p><b>Contacts:</b>
+    {% for c in contacts %}
+        <p><a href="/user/{{c.receiver.email}}/">{{c.receiver.first_name}} {{c.receiver.last_name}}</a></p>
+    {% empty %}
+        {% if me %}
+        <p>No contacts? Try sending a request to <a href="/user/svsaraf90@gmail.com">this guy</a>. He's friendly!
+        {% endif %}
+    {% endfor %}
 </div>
 {% endblock %}
