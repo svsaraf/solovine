@@ -7,12 +7,7 @@
 {% block bodyblock %}
 <div class="main">
     {% for p in posts %}
-        <div class="post">
-            <div class="posttitle"><a href="/{% if public %}public{% else %}post{% endif %}/{{p.slug}}"><b>{{p.title}}</b></a></div>
-            <div class="postlink"><a href="{{p.link}}" target="blank">({{p.link}})</a></div><br>
-            <div class="postauthor"><a href="/user/{{p.author.email}}">{{p.author.first_name}} {{p.author.last_name}}</a></div> | <div class="postage">{{p.timestamp|date:"D d M Y"}}</div> | <div class="postcomments"><a href="/{% if public %}public{% else %}post{% endif %}/{{p.slug}}#commentbox">{{p.num_comments}} comment{{ p.num_comments|pluralize }}</a></div>
-            
-        </div>
+        {% include 'posts/postheader.html' %}
     {% empty %}
         Uh oh. There aren't any posts here. Maybe try <a href="/user/svsaraf90@gmail.com">making a friend</a> or <a href="/create/">writing something</a>!
     {% endfor %}
