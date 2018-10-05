@@ -21,6 +21,7 @@ def public_post(request, title):
     context['posts'] = Post.objects.filter(public=True).filter(slug=title).annotate(num_comments=Count('comment'))
     context['comments'] = Comment.objects.filter(post=Post.objects.filter(public=True).filter(slug=title)[0]).filter(parentcomment=None).order_by('-timestamp')
     context['public'] = True
+    context['title'] = context['posts'][0].title
     return render(request, 'posts/postdetail.html', context)
 
 @login_required(login_url='/login')
@@ -41,6 +42,7 @@ def post(request, title):
     if len(Contact.objects.filter(sender=request.user, receiver=posts[0].author, accepted=True)) == 0 and request.user != posts[0].author and not posts[0].public:
         return render(request, 'posts/postdetail.html', context) 
     context['posts'] = posts 
+    context['title'] = posts[0].title
     context['comments'] = Comment.objects.filter(post=Post.objects.filter(slug=title)[0]).filter(parentcomment=None).order_by('-timestamp')
 
     return render(request, 'posts/postdetail.html', context)
