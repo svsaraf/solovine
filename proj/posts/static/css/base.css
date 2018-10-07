@@ -146,15 +146,18 @@ body {
         margin-left: 10%;
         margin-right: 10%;
     }
+    #creationform {
+        width: 100%;
+    }
 
     .createtitle {
-        width: 595px; 
+        width: 70%; 
     }
     .createlink {
-        width: 595px; 
+        width: 70%; 
     }
     .createeditor {
-        width: 600px; 
+        width: 70%; 
     }
 
     .createdesc {

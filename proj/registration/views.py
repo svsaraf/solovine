@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from mailgun_email import send_registration_email
 # Create your views here.
 
 def home(request):
@@ -31,6 +32,7 @@ def register(request):
                 return render(request, 'registration/success.html', {'message': 'Invalid email address!'})
             u = User.objects.create_user(username=email, password=password, email=email, first_name=firstname, last_name=lastname)
             u.save()
+            send_registration_email(email)
             user = authenticate(username=email, password=password)
             auth_login(request, user)
             response = render(request, 'registration/success.html', {'message': 'Created user!'})
