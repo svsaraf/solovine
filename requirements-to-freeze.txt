@@ -1,3 +1,8 @@
 Django
 feedparser
 pytz
+certifi
+chardet
+idna
+requests
+urllib3

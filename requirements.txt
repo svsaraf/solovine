@@ -1,4 +1,8 @@
-Django==2.1.2
+certifi==2018.8.24
+chardet==3.0.4
+Django==2.1
 feedparser==5.2.1
+idna==2.7
 pytz==2018.5
-## The following requirements were added by pip freeze:
+requests==2.19.1
+urllib3==1.23
