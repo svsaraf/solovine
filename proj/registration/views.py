@@ -5,7 +5,9 @@ from django.contrib.auth.models import User
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from mailgun_email import send_registration_email
+from mailgun_email import send_registration_email, send_password_reset
+import random
+import string
 # Create your views here.
 
 def home(request):
@@ -60,6 +62,22 @@ def login(request):
     else:
         #non ajax registration
         return render(request, 'registration/login.html', {})
+
+def forgot(request):
+    if request.method == 'POST':
+        # reset password and email it to user
+        email = request.POST.get("email", "")
+        user = User.objects.get(username=email)
+        if user is not None:
+            newpw = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+            user.set_password(newpw)
+            user.save()
+            send_password_reset(user.username, newpw)
+            return render(request, 'registration/success.html', {'message': 'Password reset! Check your email, it should get there within 5 minutes.'})
+        else:
+            return render(request, 'registration/success.html', {'message': 'That email isn\'t in our system. Please register.'})
+    else:
+        return render(request, 'registration/forgot.html', {})
 
 def logout(request):
     auth_logout(request)

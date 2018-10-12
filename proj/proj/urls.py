@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/', registration_views.login, name='login'),
     path('logout/', registration_views.logout, name='logout'),
     path('faq/', registration_views.faq, name='faq'),
+    path('forgot/', registration_views.forgot, name='forgot'),
 
     path('public/', posts_views.public_posts, name='public_posts'),
     path('public/<slug:title>/', posts_views.public_post, name='public_post'),

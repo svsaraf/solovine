@@ -1,0 +1,19 @@
+{% extends 'posts/base.html' %}
+
+{% block titleblock %}
+Forgot password!
+{% endblock %}
+
+{% block bodyblock %}
+<div class="main">
+<div id="form-target"> <b>Forgot your password?</b> Give us the email you used to sign up, we'll send you a new one.</p>
+<form ic-post-to="/forgot/" ic-target="#form-target" ic-include="#defaults">
+    <div class="form-group">
+      
+      <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email address" style="width: 300px; border: none; padding: 0px; padding-left: 5px; height: 30px; margin-bottom: 10px; font-size: 13px; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas'">
+    </div>
+    <button id="form-button-1" type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+</div>
+{% endblock %}
