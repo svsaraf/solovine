@@ -12,16 +12,18 @@
 {% block headerblock %}
 <div class="header">
     <div class="logo">
-        <a href="/public/" style="color: black; text-decoration: none;"><b><i>solovine</i></b></a><a href="/public/" style="color: black; text-decoration: none; padding-left: 20px;"><u>public</u></a><a href="/posts/" style="color: black; text-decoration: none; padding-left: 10px;"><u>private</u></a><a href="/feeds/" style="color: black; text-decoration: none; padding-left: 10px;"><u>feeds</u></a><a href="/create/" style="color: black; text-decoration: none; padding-left: 10px;"><u>write</u></a>
+        <a href="/public/" style="">solovine</a>    
     </div>
+    <div class="links">
+        <a href="/public/">Public</a><div class="pipe">|</div><a href="/posts/">Private</a><div class="pipe">|</div><a href="/feeds/">Read</a><div class="pipe">|</div><a href="/create/">Write</a><div class="pipe">|</div><a href="/faq/">FAQ</a>
+
     <div class="userstatus" id="authtarget">
-        <a href="/faq/" style="color: black; text-decoration: none; padding-right: 10px;"><u>faq</u></a>
         {% if user.is_authenticated %}
-        <a href="/user/{{user.email}}" style="color: black; text-decoration: none; padding-right: 10px;"><u>profile</u></a>
-            Hi {{ user.first_name }}! | <a ic-post-to="/logout/" ic-target="#authtarget" ic-include="#defaults" href="#">Logout</a>
+        <a style="color: white;" href="/user/{{user.email}}">Hi {{ user.first_name }}!</a><div class="pipe">|</div><a ic-post-to="/logout/" ic-target="#authtarget" ic-include="#defaults" href="#">Logout</a>
         {% else %}
             <a href="/login">Login</a> | <a href="/register">Register</a>
         {% endif %}
+    </div>
     </div>
 </div>
 {% endblock %}

@@ -9,29 +9,59 @@ body {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
     grid-template-areas: "main";
+    background-color: #cdddd4e6;
 }
 
 .header {
-    background-color: #06778480;
-    padding-left: 6px;
-    padding-right: 10px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    background-color: #033b0d;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
+
 .userstatus {
     float: right;
-    display: inline-block;
 }
 
 .logo {
     display: inline-block;
 }
 
+.links {
+    display: inline-block;
+    padding-left: 10px;
+    width: 90%;
+}
+
+.pipe {
+    font-size: 22px;
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logo a {
+    color: white; 
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.links a, .userstatus a {
+    text-decoration: none;
+    color: #adadad; 
+    padding-left: 10px;
+    font-family: verdana;
+    font-size: 13px;
+    padding-right: 10px;
+}
+
 .main {
-    background-color: #00ff661a;
+    /*background-color: #00ff661a;*/
     height: 100%;
     padding-top: 15px;
-    padding-left: 6px;
 }
 
 .posttitle {
@@ -44,9 +74,22 @@ body {
     display: inline-block;
 }
 
-.postauthor a, .postlink a, .postsend a, .postcomments a, .commentauthor a, .commentage, .postage, .postcomments, .reply {
+.posttitle a {
+    color: #033b0d;
+    font-family: verdana;
+    font-size: 14px;
+}
+.postlink a {
+    color: #5c5b5b;
+    font-family: verdana;
+    font-size: 12px;
+}
+
+.postauthor a, .postsend a, .postcomments a, .commentauthor a, .commentage, .postage, .postcomments, .reply {
     text-decoration: none;
-    color: #6c6053cc;
+    color: #5c5b5b;
+        font-family: verdana;
+    font-size: 12px;
 }
 
 .postsend {
@@ -61,7 +104,6 @@ body {
     font-size: 13px;
 }
 .postage {
-    font-family: helvetica;
     font-size: 13px;
     display: inline-block;
 }
@@ -73,7 +115,6 @@ body {
 
 .postcomments {
     display: inline-block;
-    font-family: helvetica;
     font-size: 13px;
 }
 
@@ -143,8 +184,8 @@ body {
         margin-right: 10%;
     }
     .header {
-        margin-left: 10%;
-        margin-right: 10%;
+        /*margin-left: 10%;
+        margin-right: 10%;*/
     }
     #creationform {
         width: 100%;

@@ -43,7 +43,6 @@ urlpatterns = [
     path('getfeedadd/', feeds_views.getfeedadd, name='getfeedadd'),
     path('addfeed/', feeds_views.addfeed, name='addfeed'),
 
-
     path('user/<str:email>/', friends_views.profile, name='userprofile'),
     path('accept/<str:email>/', friends_views.accept, name='acceptrequest'),
     path('send/<str:email>/', friends_views.send, name='sendrequest'),
