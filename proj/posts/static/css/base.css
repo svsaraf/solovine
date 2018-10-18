@@ -9,13 +9,11 @@ body {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
     grid-template-areas: "main";
-    background-color: #cdddd4e6;
+    background-color: #cdddd433;
 }
 
 .header {
     background-color: #033b0d;
-    padding-left: 10%;
-    padding-right: 10%;
     padding-top: 6px;
     padding-bottom: 6px;
 }
@@ -141,11 +139,13 @@ body {
 }
 .submitbutton {
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 18px;
-    background-color: white;
+    background-color: #033b0d;
     padding: 5px;
     border-radius: 5px;
+    /*border: 2px #e4dfd9 solid;*/
+    display: inline-block;
 }
 
 .post {
@@ -159,23 +159,34 @@ body {
 .createtitle, .createlink {
     width: 100%;
     border: none; 
+    outline: 2px #e4dfd9 solid;
     padding: 0px; 
     padding-left: 5px; 
     height: 30px; 
     margin-bottom: 10px; 
     font-size: 13px; 
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas'; 
+    box-sizing: border-box;
 }
 
 .createeditor {
     width: 100%;
     height: 350px; 
     display: inline-block;
+    outline: 2px #e4dfd9 solid;
 }
 
 .createdesc {
     float: left;
     padding-bottom: 10px;
+}
+
+.creationform {
+    border: ;
+}
+
+.logo {
+    display: none;
 }
 
 @media screen and (min-width: 480px) {
@@ -184,8 +195,8 @@ body {
         margin-right: 10%;
     }
     .header {
-        /*margin-left: 10%;
-        margin-right: 10%;*/
+        padding-left: 10%;
+        padding-right: 10%;
     }
     #creationform {
         width: 100%;
@@ -204,5 +215,20 @@ body {
     .createdesc {
         float: right;
         display: inline-block; 
+    }
+
+    .faqtext {
+        width: 480px;
+    }
+
+    .logo {
+        display: inline-block;
+    }
+
+}
+
+@media screen and (min-width: 631px) and (max-width: 1022px) {
+    .links {
+        width: 70%;
     }
 }
