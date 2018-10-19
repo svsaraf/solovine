@@ -124,14 +124,15 @@ body {
     display: inline-block;
 }
 .commentage {
-    font-family: helvetica;
     display: inline-block;
+    font-family: verdana;
     font-size: 13px;
 }
 
 .reply {
     font-size: 13px;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
 .editor {
@@ -153,7 +154,7 @@ body {
 }
 
 .comment {
-    margin-bottom: 2px;
+    margin-bottom: 0px;
 }
     
 .createtitle, .createlink {
@@ -189,6 +190,16 @@ body {
     display: none;
 }
 
+.userstatus {
+    color: #adadad; 
+    /*font-family: verdana;*/
+    /*font-size: 13px;*/
+}
+
+.message {
+    font-family: verdana;
+    font-size: 13px;
+}
 @media screen and (min-width: 480px) {
     .main {
         margin-left: 10%;
@@ -229,6 +240,18 @@ body {
 
 @media screen and (min-width: 631px) and (max-width: 1022px) {
     .links {
-        width: 70%;
+        width: 90%;
     }
+}
+
+.rotateprofileheader {
+    -webkit-transform: rotate(-90deg); 
+    -moz-transform: rotate(-90deg);
+    padding-bottom: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cell {
+    text-align: center;
 }

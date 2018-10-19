@@ -6,6 +6,7 @@
 
 {% block bodyblock %}
 <div class="main">
+    <div style="display: inline-block;">
     <div><b>Email:</b> {{ profile.email }}</div>
     <div><b>First name:</b> {{ profile.first_name }}</div>
     <div><b>Last name:</b> {{ profile.last_name }}</div>
@@ -43,5 +44,47 @@
         <p>No contacts? Try sending a request to <a href="/user/svsaraf90@gmail.com">this guy</a>. He's friendly!
         {% endif %}
     {% endfor %}
+</div>
+     <table style="float: right; display: inline-block;">
+  <tr>
+    <th></th>
+    <th class="rotateprofileheader">alpha</th>
+    <th class="rotateprofileheader">bravo</th>
+    <th class="rotateprofileheader">charlie</th>
+    <th class="rotateprofileheader">delta</th>
+    <th class="rotateprofileheader">echo</th>
+    <th class="rotateprofileheader">foxtrot</th>
+    <th class="rotateprofileheader">golf</th>
+    <th class="rotateprofileheader">hotel</th>
+    <th class="rotateprofileheader">india</th>
+    <th class="rotateprofileheader">juliet</th>
+  </tr>
+  <tr>
+    <td class="cell">John</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+  </tr>
+  <tr>
+    <td>Smith</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+    <td class="cell">x</td>
+  </tr>
+</table> 
 </div>
 {% endblock %}
