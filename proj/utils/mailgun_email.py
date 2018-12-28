@@ -1,5 +1,5 @@
 import requests
-from secrets import *
+from .secrets import *
 
 def send_registration_email(to_email):
     link = "https://api.mailgun.net/v3/mg.solovine.com/messages"

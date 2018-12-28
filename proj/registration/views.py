@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from mailgun_email import send_registration_email, send_password_reset
+from utils.mailgun_email import send_registration_email, send_password_reset
 import random
 import string
 # Create your views here.
