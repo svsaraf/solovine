@@ -247,7 +247,7 @@ body {
 .rotateprofileheader {
     -webkit-transform: rotate(-90deg); 
     -moz-transform: rotate(-90deg);
-    padding-bottom: 20px;
+    padding-bottom: 1px;
     text-align: center;
     vertical-align: middle;
 }

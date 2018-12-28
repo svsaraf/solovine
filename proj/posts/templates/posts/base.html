@@ -12,10 +12,10 @@
 {% block headerblock %}
 <div class="header">
     <div class="logo">
-        <a href="/public/" style="">solovine</a>    
+        <a href="/" style="">solovine</a>    
     </div>
     <div class="links">
-        <a href="/public/">Public</a><div class="pipe">|</div><a href="/posts/">Private</a><div class="pipe">|</div><a href="/feeds/">Read</a><div class="pipe">|</div><a href="/create/">Write</a><div class="pipe">|</div><a href="/faq/">FAQ</a>
+        <a href="/posts/">Posts</a><div class="pipe">|</div><a href="/create/">Write</a><div class="pipe">|</div><a href="/faq/">FAQ</a>
     <div class="userstatus" id="authtarget">
         {% if user.is_authenticated %}
             <a style="color: white;" href="/user/{{user.email}}">Hi {{ user.first_name }}!</a><div class="pipe">|</div><a ic-post-to="/logout/" ic-target="#authtarget" ic-include="#defaults" href="#">Logout</a>

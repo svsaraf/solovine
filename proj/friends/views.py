@@ -24,7 +24,7 @@ def profile(request, email):
                     context['can_send_request'] = True
                     context['me'] = False
     context['profile'] = users[0]
-
+    context['numusers'] = User.objects.all().count()
     return render(request, 'friends/profile.html', context)
 
 @login_required(login_url='/login')

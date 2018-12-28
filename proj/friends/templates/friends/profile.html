@@ -36,18 +36,18 @@
         <p>No one's sent you any contact requests. Boo. 
     {% endfor %}
     {% endif %}
-    <p><b>Contacts:</b>
-    {% for c in contacts %}
-        <p><a href="/user/{{c.receiver.email}}/">{{c.receiver.first_name}} {{c.receiver.last_name}}</a></p>
-    {% empty %}
-        {% if me %}
-        <p>No contacts? Try sending a request to <a href="/user/svsaraf90@gmail.com">this guy</a>. He's friendly!
-        {% endif %}
-    {% endfor %}
+    {% if me %}
+    {% else %}
+        <p><b>Contacts:</b></p>
+        {% for c in contacts %}
+            <p><a href="/user/{{c.receiver.email}}/">{{c.receiver.first_name}} {{c.receiver.last_name}}</a>
+        {% endfor %}
+    {% endif %}
 </div>
-     <table style="float: right; display: inline-block;">
-  <tr>
-    <th></th>
+{% if me %}
+<table style="float: right; display: inline-block;">
+  <tr style="height: 50px">
+    <th>Contacts:</th>
     <th class="rotateprofileheader">alpha</th>
     <th class="rotateprofileheader">bravo</th>
     <th class="rotateprofileheader">charlie</th>
@@ -59,32 +59,23 @@
     <th class="rotateprofileheader">india</th>
     <th class="rotateprofileheader">juliet</th>
   </tr>
-  <tr>
-    <td class="cell">John</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-  </tr>
-  <tr>
-    <td>Smith</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-    <td class="cell">x</td>
-  </tr>
-</table> 
+      {% for c in contacts %}
+         <tr>
+            <td class="cell" style="text-align:left"><a href="/user/{{c.receiver.email}}/">{{c.receiver.first_name}} {{c.receiver.last_name}}</a></td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+            <td class="cell">x</td>
+          </tr>
+    {% endfor %}
+</table>
+{% endif %} 
+<div><b>Total users:</b> {{numusers}}</div>
 </div>
 {% endblock %}
